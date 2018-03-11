@@ -1,0 +1,20 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Gato.js">
+    <Files>
+      <File FileName="Assets\Personaje_definitivo.js" Line="439" Column="3" />
+      <File FileName="Assets\Intro1_1.js" Line="1" Column="1" />
+      <File FileName="Assets\Personaje_definitivo.js" Line="881" Column="1" />
+      <File FileName="Assets\Menu_cambio.js" Line="1" Column="1" />
+      <File FileName="Assets\cambiar_escena.js" Line="1" Column="1" />
+      <File FileName="Assets\atrar_menu(Boton).js" Line="31" Column="34" />
+      <File FileName="Assets\atras(Boton).js" Line="1" Column="1" />
+      <File FileName="Assets\Perro.js" Line="1" Column="1" />
+      <File FileName="Assets\Gato.js" Line="89" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

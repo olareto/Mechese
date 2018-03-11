@@ -1,0 +1,6 @@
+﻿
+
+function OnMouseDown()
+{
+Application.Quit();
+}
