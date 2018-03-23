@@ -16,7 +16,7 @@
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.6.3p1</UnityVersion>
+    <UnityVersion>5.6.3p2</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
@@ -50,36 +50,58 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
-      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
-      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AspectUtility.cs" />
-    <Compile Include="Assets\Codigo_nuevo\video_prueba.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Alfeizar.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Botiquin.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Caja.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Caja2.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_CajaMadera.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Carta.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Moneda.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_PowerUP.cs" />
+    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Otros\Scr_ControladorMenu.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_ControlUI.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Cartero.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_GatoMalo.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Generico_Enemigo.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Pajaro.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Perro.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_RataPija.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Generico_Destruir.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe_1.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Personaje.cs" />
+    <Compile Include="Assets\Scripts\Javascript\AspectUtility.cs" />
+    <Compile Include="Assets\Scripts\Javascript\Codigo_nuevo\video_prueba.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
