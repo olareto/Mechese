@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Scr_ControlUI : MonoBehaviour {
 
@@ -131,5 +132,11 @@ public class Scr_ControlUI : MonoBehaviour {
                 contenedorVidas.SetActive(false);
             }
         }
+    }
+
+    public void ClickRestart()
+    {
+        Debug.Log("Click");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

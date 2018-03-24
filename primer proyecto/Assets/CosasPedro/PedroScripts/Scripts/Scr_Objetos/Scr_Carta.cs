@@ -27,17 +27,17 @@ public class Scr_Carta : MonoBehaviour {
 
     public void Movimiento()
     {
-        if(Tipo == 1)
+        if(tipo == 1)
         {
             this.transform.Translate(-velocidad * Time.deltaTime, 0, 0);
         }
         
-        if(Tipo == 2)
+        if(tipo == 2)
         {
             this.transform.Translate(-velocidad * Time.deltaTime, -velocidad * Time.deltaTime, 0);
         }
 
-        if (Tipo == 3)
+        if (tipo == 3)
         {
             this.transform.Translate(-velocidad * Time.deltaTime, velocidad * Time.deltaTime, 0);
         }

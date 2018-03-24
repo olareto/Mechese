@@ -101,7 +101,7 @@ public class Scr_Personaje : MonoBehaviour {
         {
             MovimientoCamaraYMe();
             
-            if (Input.anyKeyDown && golpeado == false)
+            if (Input.GetKeyDown("space") && golpeado == false)
             {
                 Salto();
             }
