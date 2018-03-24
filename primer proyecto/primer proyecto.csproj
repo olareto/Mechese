@@ -81,16 +81,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Alfeizar.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Botiquin.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Caja.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Caja2.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_CajaMadera.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Carta.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_Moneda.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Objetos\Scr_PowerUP.cs" />
-    <Compile Include="Assets\CosasPedro\PedroScripts\Scripts\Scr_Otros\Scr_ControladorMenu.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_ControlUI.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Carta.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Cartero.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_GatoMalo.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Generico_Enemigo.cs" />

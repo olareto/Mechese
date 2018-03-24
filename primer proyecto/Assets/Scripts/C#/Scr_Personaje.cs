@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scr_Personaje : MonoBehaviour {
 
@@ -14,10 +15,10 @@ public class Scr_Personaje : MonoBehaviour {
     private float tiempoInvulnerable;
 
     [SerializeField]
-    private float margenDesplazamiento;
+    private GameObject pfPolvo;
 
     [SerializeField]
-    private GameObject pfPolvo;
+    private float posicionMeta; //1550 en Mundo1_1
 
     private GameObject objCamara;
 	private Rigidbody2D rbMe;
@@ -88,8 +89,15 @@ public class Scr_Personaje : MonoBehaviour {
         golpeado = false;
         meMuevo = true;
         berserk = false;
-        intro = false;
         meta = false;
+        if (SceneManager.GetActiveScene().name == "Esc_Mundo1_1")
+        {
+            intro = false;
+        }
+        else
+        {
+            StartCoroutine("FinIntro");
+        }
 
         yInicialCamara = objCamara.transform.position.y;
         separacionx = objCamara.transform.position.x - this.transform.position.x ;
@@ -175,13 +183,14 @@ public class Scr_Personaje : MonoBehaviour {
         {
             if (golpeado == false &&
                 (
+                    nombreColTr == "Carta" ||
                     nombreColTr == "RataPija" ||
                     nombreColTr == "Pajaro" ||
                     nombreColTr == "Perro" ||
                     nombreColTr == "GatoMalo" ||
                     nombreColTr == "Cartero" ||
-                    nombreColTr == "Carta" ||
-                    nombreColTr == "BaseCaja"
+                    nombreColTr == "BaseCaja" ||
+                    nombreColTr == "ArbustoMalo"
                 )
             )
             {
@@ -209,12 +218,12 @@ public class Scr_Personaje : MonoBehaviour {
             //Modo BERSERK
             if (golpeado == false &&
                 (
+                    nombreColTr == "Carta" ||
                     nombreColTr == "RataPija" ||
                     nombreColTr == "Pajaro" ||
                     nombreColTr == "Perro" ||
                     nombreColTr == "GatoMalo" ||
-                    nombreColTr == "Cartero" ||
-                    nombreColTr == "Carta"
+                    nombreColTr == "Cartero"
                 )
             )
             {
@@ -268,7 +277,7 @@ public class Scr_Personaje : MonoBehaviour {
         if (meMuevo == true) {
             //MeCheese
             this.transform.Translate(velocidad * Time.deltaTime, 0, 0);
-            if (this.transform.position.x >= 1550)
+            if (this.transform.position.x >= posicionMeta)
             {
                 meta = true;
                 PararSonido(0);
@@ -287,7 +296,7 @@ public class Scr_Personaje : MonoBehaviour {
         bool despVertCamaraSubida = false;
         bool despVertCamaraBajada = false;
         float velDesplCamara = 50f;
-        float alturaCambio = 18f;
+        float alturaCambio = yInicialCamara + 11f; //18f en el Mundo1_1;
         float delta = 0.8f;
         if (this.transform.position.y > alturaCambio)
         {
@@ -398,6 +407,7 @@ public class Scr_Personaje : MonoBehaviour {
 
     public void Desplazado()
     {
+        float margenDesplazamiento = 1f;
         if (this.transform.position.x < objCamara.transform.position.x - separacionx - margenDesplazamiento)
         {
             if (this.invulnerable == false && berserk == false)
@@ -421,6 +431,13 @@ public class Scr_Personaje : MonoBehaviour {
             this.transform.position = new Vector2(objCamara.transform.position.x - separacionx, this.transform.position.y);
         }
         
+    }
+
+    public IEnumerator FinIntro()
+    {
+        yield return new WaitForSeconds(0.5f);
+        intro = true;
+        Sonido(0);
     }
 
     public void Sonido(int numeroSonido)

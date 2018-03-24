@@ -12,7 +12,11 @@ public class Scr_Perro : Scr_Generico_Enemigo {
     [Tooltip("Valor de 0 a 30")]
     private float fuerzaSalto;
 
-	[SerializeField]
+    [SerializeField]
+    [Tooltip("Valor de 0 a 20")]
+    private float fuerzaGravedad;
+
+    [SerializeField]
     [Tooltip("Valor de 22 a -9")]
     private float distanciaParaSalto;
 
@@ -64,7 +68,7 @@ public class Scr_Perro : Scr_Generico_Enemigo {
         {
             salto = true;
             rbMio.AddForce (new Vector2 (0, fuerzaSalto * 100));
-            rbMio.gravityScale = 10;
+            rbMio.gravityScale = fuerzaGravedad;
 
             if (hasHechoSonido == false)
             {

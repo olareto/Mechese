@@ -136,7 +136,6 @@ public class Scr_ControlUI : MonoBehaviour {
 
     public void ClickRestart()
     {
-        Debug.Log("Click");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
