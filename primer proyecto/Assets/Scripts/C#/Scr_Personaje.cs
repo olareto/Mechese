@@ -83,7 +83,12 @@ public class Scr_Personaje : MonoBehaviour {
 		animMe = this.GetComponent<Animator> ();
 
 		salto = 0;
-        Vidas = 3;
+
+        vidas = 3;
+        if (SceneManager.GetActiveScene().name == "Esc_Mundo1_3")
+        {
+            vidas = 1;
+        }
         monedas = 0;
 
         golpeado = false;
@@ -109,9 +114,9 @@ public class Scr_Personaje : MonoBehaviour {
         {
             MovimientoCamaraYMe();
             
-            if (Input.GetKeyDown("space") && golpeado == false)
+            if (Input.GetKeyDown("space") && golpeado == false && meta == false)
             {
-                Salto();
+                 Salto();
             }
         } 
 
@@ -132,140 +137,167 @@ public class Scr_Personaje : MonoBehaviour {
     }
 
 	public void Salto(){
-		if (this.salto < 2){ // && this.parado != false) {
-			rbMe.velocity = new Vector2 (0, 0);
-			rbMe.AddForce (new Vector2 (0, fuerzaSalto * 100 ));
+        if (this.salto < 2){ // && this.parado != false) {
+            //Para correccion
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y+1f, this.transform.position.z);
+
+            rbMe.velocity = new Vector2 (0, 0);
+            rbMe.AddForce (new Vector2 (0, fuerzaSalto * 100 ));
 			salto += 1;
             if(berserk == false)
             {
                 this.animMe.SetInteger("TransMe", salto); //Salto 1 o salto 2
-            }			
+            }
 		}
 	}
 
 	public void OnTriggerEnter2D(Collider2D colTr) {
-		string nombreColTr = colTr.gameObject.name;
 
-        if (nombreColTr == "Moneda")
+        if (meta == false)
         {
-            Destroy(colTr.gameObject);
-            monedas++;
-            SonidoMonedas();
-        }
+            string nombreColTr = colTr.gameObject.name;
 
-        if (nombreColTr == "Botiquin")
-        {
-            Sonido(3); //Sardina
-            Destroy(colTr.gameObject);
-            vidas++;
-        }
-
-        if (nombreColTr == "PowerUP")
-        {
-            Sonido(2); //Berserk
-            Destroy(colTr.gameObject);
-            //Berserk
-            animMe.SetInteger("TransMe", 6);
-            berserk = true;
-            this.velocidad *= 2;
-        }
-
-        if (nombreColTr == "Vacio")
-        {
-            Sonido(4); //CaidaAlVacio
-            golpeado = true;
-            vidas = 0;
-            PararSonido(0);
-            meMuevo = false;
-        }
-
-        if (berserk == false)
-        {
-            if (golpeado == false &&
-                (
-                    nombreColTr == "Carta" ||
-                    nombreColTr == "RataPija" ||
-                    nombreColTr == "Pajaro" ||
-                    nombreColTr == "Perro" ||
-                    nombreColTr == "GatoMalo" ||
-                    nombreColTr == "Cartero" ||
-                    nombreColTr == "BaseCaja" ||
-                    nombreColTr == "ArbustoMalo"
-                )
-            )
+            if (nombreColTr == "Moneda")
             {
-                if (this.invulnerable == false)
-                {
-                    golpeado = true;
-                    Vidas--;
-                    if(vidas == 0)
-                    {
-                        PararSonido(0);
-                    }
-                    this.animMe.SetInteger("TransMe", 4); //Dañado
-                    StartCoroutine("EnumGolpeado");
-                }
+                Destroy(colTr.gameObject);
+                monedas++;
+                SonidoMonedas();
+            }
 
+            if (nombreColTr == "Botiquin")
+            {
+                Sonido(3); //Sardina
+                Destroy(colTr.gameObject);
+                vidas++;
+            }
+
+            if (nombreColTr == "PowerUP")
+            {
+                Sonido(2); //Berserk
+                Destroy(colTr.gameObject);
+                //Berserk
+                animMe.SetInteger("TransMe", 6);
+                berserk = true;
+                this.velocidad *= 2;
+            }
+
+            if (nombreColTr == "Vacio")
+            {
+                Sonido(4); //CaidaAlVacio
+                golpeado = true;
+                vidas = 0;
+                PararSonido(0);
+                meMuevo = false;
+            }
+
+            if (berserk == false)
+            {
                 //Ya no puedo saltar encima
-                if (nombreColTr == "BaseCaja")
+                if (nombreColTr == "TuberiaJefeBase")
                 {
                     colTr.GetComponentsInParent<Collider2D>()[1].enabled = false;
                 }
-            }
-        }
-        else
-        {
-            //Modo BERSERK
-            if (golpeado == false &&
-                (
-                    nombreColTr == "Carta" ||
-                    nombreColTr == "RataPija" ||
-                    nombreColTr == "Pajaro" ||
-                    nombreColTr == "Perro" ||
-                    nombreColTr == "GatoMalo" ||
-                    nombreColTr == "Cartero"
+
+                if (nombreColTr == "TuberiaJefe")
+                {
+                    colTr.gameObject.GetComponent<Scr_Tuberia>().LanzarAgua();
+                    salto = 0;
+                }
+
+                if (golpeado == false &&
+                    (
+                        nombreColTr == "Periodico" ||
+                        nombreColTr == "Carta" ||
+                        nombreColTr == "RataPija" ||
+                        nombreColTr == "Pajaro" ||
+                        nombreColTr == "Perro" ||
+                        nombreColTr == "GatoMalo" ||
+                        nombreColTr == "Cartero" ||
+                        nombreColTr == "BaseCaja" ||
+                        nombreColTr == "ArbustoMalo" ||
+                        nombreColTr == "Jefe_1"
+
+                    )
                 )
-            )
+                {
+                    if (this.invulnerable == false)
+                    {
+                        golpeado = true;
+                        Vidas--;
+                        if (vidas == 0)
+                        {
+                            PararSonido(0);
+                        }
+                        this.animMe.SetInteger("TransMe", 4); //Dañado
+                        StartCoroutine("EnumGolpeado");
+                    }
+
+                    //Ya no puedo saltar encima
+                    if (nombreColTr == "BaseCaja")
+                    {
+                        colTr.GetComponentsInParent<Collider2D>()[1].enabled = false;
+                    }
+                }
+            }
+            else
             {
-                Destroy(colTr.gameObject);
-                GameObject objPolvo = Instantiate(pfPolvo);
-                objPolvo.transform.position = new Vector3(colTr.transform.position.x, colTr.transform.position.y, colTr.transform.position.z);
+                //Modo BERSERK
+                if (golpeado == false &&
+                    (
+                        nombreColTr == "Carta" ||
+                        nombreColTr == "RataPija" ||
+                        nombreColTr == "Pajaro" ||
+                        nombreColTr == "Perro" ||
+                        nombreColTr == "GatoMalo" ||
+                        nombreColTr == "Cartero"
+                    )
+                )
+                {
+                    Destroy(colTr.gameObject);
+                    GameObject objPolvo = Instantiate(pfPolvo);
+                    objPolvo.transform.position = new Vector3(colTr.transform.position.x, colTr.transform.position.y, colTr.transform.position.z);
+                }
             }
         }
-        
-	}
+  	}
 
 	//Colisiones
 	public void OnCollisionEnter2D(Collision2D colisionador){
-		string nombreColisionador = colisionador.gameObject.name;
+        if (meta == false)
+        {
+            string nombreColisionador = colisionador.gameObject.name;
 
-		if (nombreColisionador == "Suelo") {
-			rbMe.velocity = new Vector2 (0, 0);
-			salto = 0;
-			if (golpeado == false) {
+            if (nombreColisionador == "Suelo")
+            {
+                rbMe.velocity = new Vector2(0, 0);
+                salto = 0;
+                if (golpeado == false)
+                {
+                    if (berserk == false)
+                    {
+                        this.animMe.SetInteger("TransMe", 0); //Corriendo
+                    }
+                }
+            }
+
+            if (
+                    nombreColisionador == "Alfeizar" ||
+                    nombreColisionador == "Tejado" ||
+                    nombreColisionador == "Caja" ||
+                    nombreColisionador == "Caja2" ||
+                    nombreColisionador == "CajaMadera"
+                )
+            {
+                salto = 0;
                 if (berserk == false)
                 {
                     this.animMe.SetInteger("TransMe", 0); //Corriendo
-                }                   
-			}
-		}
-
-        if (
-                nombreColisionador == "Alfeizar" ||
-                nombreColisionador == "Tejado" ||
-                nombreColisionador == "Caja" ||
-                nombreColisionador == "Caja2" ||
-                nombreColisionador == "CajaMadera"
-            )
-        {
-            salto = 0;
-            if (berserk == false)
-            {
-                this.animMe.SetInteger("TransMe", 0); //Corriendo
-            }              
-        }
+                }
+            }
+        }	
     }
 
+    //Solo para la intro
     public void MovimientoLento()
     {
         this.transform.Translate(velocidad/2 * Time.deltaTime, 0, 0);
@@ -277,7 +309,7 @@ public class Scr_Personaje : MonoBehaviour {
         if (meMuevo == true) {
             //MeCheese
             this.transform.Translate(velocidad * Time.deltaTime, 0, 0);
-            if (this.transform.position.x >= posicionMeta)
+            if (this.transform.position.x >= posicionMeta && posicionMeta!=-1)
             {
                 meta = true;
                 PararSonido(0);
@@ -410,7 +442,7 @@ public class Scr_Personaje : MonoBehaviour {
         float margenDesplazamiento = 1f;
         if (this.transform.position.x < objCamara.transform.position.x - separacionx - margenDesplazamiento)
         {
-            if (this.invulnerable == false && berserk == false)
+            if (this.invulnerable == false && berserk == false && meta == false)
             {
                 golpeado = true;
                 Vidas--;
@@ -435,7 +467,8 @@ public class Scr_Personaje : MonoBehaviour {
 
     public IEnumerator FinIntro()
     {
-        yield return new WaitForSeconds(0.5f);
+        float segundos = 1f;
+        yield return new WaitForSeconds(segundos);
         intro = true;
         Sonido(0);
     }

@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scr_JefeMojado.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_ControlUI.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Carta.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Cartero.cs" />
@@ -90,7 +91,13 @@
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Perro.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_RataPija.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Generico_Destruir.cs" />
-    <Compile Include="Assets\Scripts\C#\Scr_Jefe_1.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_Bomba.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_ControlFondoJefe1.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_Jefe1_Batalla.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_Periodico.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_Tuberia.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1\Scr_TuberiaJefeAgua.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_Jefe1_Intro.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Personaje.cs" />
     <Compile Include="Assets\Scripts\Javascript\AspectUtility.cs" />
     <Compile Include="Assets\Scripts\Javascript\Codigo_nuevo\video_prueba.cs" />

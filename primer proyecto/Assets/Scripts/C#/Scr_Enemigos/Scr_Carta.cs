@@ -8,6 +8,7 @@ public class Scr_Carta : MonoBehaviour {
     private float velocidad;
 
     private int tipo;
+    private bool rotada;
 
     public int Tipo
     {
@@ -18,29 +19,21 @@ public class Scr_Carta : MonoBehaviour {
     // Use this for initialization
     void Start () {
         this.name = "Carta";
+        rotada = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Movimiento();
+        if (rotada == false)
+        {
+            Rota();
+        }
     }
 
     public void Movimiento()
     {
-        if(tipo == 1)
-        {
-            this.transform.Translate(-velocidad * Time.deltaTime, 0, 0);
-        }
-        
-        if(tipo == 2)
-        {
-            this.transform.Translate(-velocidad * Time.deltaTime, -velocidad * Time.deltaTime, 0);
-        }
-
-        if (tipo == 3)
-        {
-            this.transform.Translate(-velocidad * Time.deltaTime, velocidad * Time.deltaTime, 0);
-        }
+        this.transform.Translate(-velocidad * Time.deltaTime, 0, 0);     
     }
 
     //Colisiones Trigger
@@ -57,4 +50,27 @@ public class Scr_Carta : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
+    public void Rota()
+    {
+        //Abajo
+        if (tipo == 1)
+        {
+            this.transform.Rotate(new Vector3(0, 0, 45));
+            rotada = true;
+        }
+
+        //Centro
+        if (tipo == 2)
+        {
+            rotada = true;
+        }
+        
+        //Arriba
+        if (tipo == 3)
+        {
+            this.transform.Rotate(new Vector3(0, 0, -45));
+            rotada = true;
+        }
+        
+    }
 }

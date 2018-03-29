@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_Jefe_1 : MonoBehaviour {
+public class Scr_Jefe1_Intro : MonoBehaviour {
 
     [SerializeField]
     private GameObject espada;

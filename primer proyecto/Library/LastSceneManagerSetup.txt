@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Escenas/Escenas_definitivas/Esc_Mundo1_2.unity
+- path: Assets/Escenas/Escenas_definitivas/Esc_Mundo1_3.unity
   isLoaded: 1
   isActive: 1

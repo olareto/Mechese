@@ -49,7 +49,8 @@ public class Scr_Cartero : Scr_Generico_Enemigo {
 
     IEnumerator EnumLanzaCartas()
     {
-        //Contador2 veces lanzará contador cartas
+        //Contador: cartas lanzadas
+        //Contador2: veces que lanzará las 3 cartas
         int contador = 0;
         int contador2 = 0;
         while (contador2 < 4)
@@ -58,7 +59,7 @@ public class Scr_Cartero : Scr_Generico_Enemigo {
             while (contador < 3)
             {
                 contador++;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
                 GameObject objCarta = Instantiate(pfCarta);
                 float espacio = 1;
                 objCarta.transform.position = new Vector3(this.transform.position.x-espacio, this.transform.position.y, this.transform.position.z);
