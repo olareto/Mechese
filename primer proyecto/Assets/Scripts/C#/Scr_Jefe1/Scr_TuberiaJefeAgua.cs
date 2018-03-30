@@ -21,6 +21,6 @@ public class Scr_TuberiaJefeAgua : MonoBehaviour {
 
     public void Movimiento()
     {
-        this.transform.Translate(velocidad * Time.deltaTime, 0, 0);
+        this.transform.position = new Vector3(transform.position.x + velocidad * Time.deltaTime, transform.position.y, transform.position.z);
     }
 }

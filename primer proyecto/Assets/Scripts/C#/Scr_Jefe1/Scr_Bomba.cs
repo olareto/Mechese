@@ -11,6 +11,9 @@ public class Scr_Bomba : MonoBehaviour {
     private GameObject socavonGrande;
 
     [SerializeField]
+    private GameObject sonidoBomba;
+
+    [SerializeField]
     private float fuerza;
 
     private bool esGrande;
@@ -43,7 +46,7 @@ public class Scr_Bomba : MonoBehaviour {
         }
     }
 
-        public void CreaSocavon()
+    public void CreaSocavon()
     {
         float margen = 3f;
 
@@ -60,6 +63,7 @@ public class Scr_Bomba : MonoBehaviour {
             socavonGrande.gameObject.name = "Vacio";
         }
 
+        Instantiate(sonidoBomba);
         Destroy(this.gameObject);
     }
 }

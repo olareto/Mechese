@@ -134,8 +134,13 @@ public class Scr_ControlUI : MonoBehaviour {
         }
     }
 
-    public void ClickRestart()
+    public void ClickBtnRestart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ClickBtnMenu()
+    {
+        SceneManager.LoadScene("Esc_Menu");
     }
 }

@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scr_JefeMojado.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_ControlUI.cs" />
+    <Compile Include="Assets\Scripts\C#\Scr_ControladorMenu.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Carta.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_Cartero.cs" />
     <Compile Include="Assets\Scripts\C#\Scr_Enemigos\Scr_GatoMalo.cs" />

@@ -121,7 +121,8 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
         float distEsperandoAtaque = 6f;
         float distPararPeq = 12f;
         float distPararGrande = 16f;
-        float distFinal = 120f;
+        float distFinal = 80f;
+        float distTuberia = 39f; //58 si distFinal = 120, 39 si distFinal = 80
 
         if (heEstadoDetras && heEsperado)
         {
@@ -131,7 +132,7 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
                 //Preparamos la embestida final
                 heEstadoDetras = false;
                 GameObject tuberiaInst = Instantiate(tuberia);
-                tuberiaInst.transform.position = new Vector3(this.transform.position.x - 58f, tuberiaInst.transform.position.y, tuberiaInst.transform.position.z);
+                tuberiaInst.transform.position = new Vector3(this.transform.position.x - distTuberia, tuberiaInst.transform.position.y, tuberiaInst.transform.position.z);
                 //this.transform.Translate(50f, 0, 0);
                 this.transform.Rotate(0,180,0); //Nos damos media vuelta 
                 embestidaFinal = true;
@@ -221,7 +222,7 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
                 vidas--;
                 if (vidas == 0)
                 {
-                    personaje.GetComponent<Scr_Personaje>().Meta = true;
+                    personaje.GetComponent<Scr_Personaje>().LlegoMeta();
                 }
             }
         } else
@@ -266,13 +267,15 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
 
         if (vidas == 2)
         {
-            numEmbestidas = 2;
+            numEmbestidas = 3;
         }
 
         if (vidas == 1)
         {
             numEmbestidas = 4;
         }
+
+        //numEmbestidas = 0; //Para pruebas
 
         //animBrazo.SetBool("atacando", true);
         //Esperamos 1 segundo
@@ -302,13 +305,15 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
 
         if (vidas == 2)
         {
-            numSeriesDeBombas = 1;
+            numSeriesDeBombas = 2;
         }
 
         if (vidas == 1)
         {
-            numSeriesDeBombas = 2;
+            numSeriesDeBombas = 3;
         }
+
+        //numSeriesDeBombas = 0; //Para pruebas
 
         patronBomba = 0;
         int contador = 0;
@@ -397,18 +402,20 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
         int numPeriodicos = 0;
         if (vidas == 3)
         {
-            numPeriodicos = 3;
+            numPeriodicos = 2;
         }
 
         if (vidas == 2)
         {
-            numPeriodicos = 3;
+            numPeriodicos = 4;
         }
 
         if (vidas == 1)
         {
             numPeriodicos = 6;
         }
+
+        //numPeriodicos = 0; //Para pruebas
         
         for (int i = 0; i < numPeriodicos; i++)
         {

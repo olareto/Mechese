@@ -37,6 +37,7 @@ public class Scr_Personaje : MonoBehaviour {
     private bool berserk;
     private bool intro;
     private bool meta;
+    private bool heTocado;
 
     [SerializeField]
     private GameObject objSonidosMonedas;
@@ -95,6 +96,7 @@ public class Scr_Personaje : MonoBehaviour {
         meMuevo = true;
         berserk = false;
         meta = false;
+        heTocado = false;
         if (SceneManager.GetActiveScene().name == "Esc_Mundo1_1")
         {
             intro = false;
@@ -113,10 +115,23 @@ public class Scr_Personaje : MonoBehaviour {
         if (intro == true)
         {
             MovimientoCamaraYMe();
-            
-            if (Input.GetKeyDown("space") && golpeado == false && meta == false)
+
+            //Para ordenador
+            if (Input.GetKeyDown("space") && !golpeado && !meta)
             {
                  Salto();
+            }
+
+            //Para movil
+            if (Input.touchCount > 0 && !heTocado && !golpeado && !meta)
+            {
+                heTocado = true;
+                Salto();
+            }
+
+            if (Input.touchCount == 0)
+            {
+                heTocado = false;
             }
         } 
 
@@ -263,36 +278,30 @@ public class Scr_Personaje : MonoBehaviour {
 
 	//Colisiones
 	public void OnCollisionEnter2D(Collision2D colisionador){
-        if (meta == false)
+        string nombreColisionador = colisionador.gameObject.name;
+
+        if (nombreColisionador == "Suelo")
         {
-            string nombreColisionador = colisionador.gameObject.name;
-
-            if (nombreColisionador == "Suelo")
+            rbMe.velocity = new Vector2(0, 0);
+            salto = 0;
+            if (!golpeado && !berserk)
             {
-                rbMe.velocity = new Vector2(0, 0);
-                salto = 0;
-                if (golpeado == false)
-                {
-                    if (berserk == false)
-                    {
-                        this.animMe.SetInteger("TransMe", 0); //Corriendo
-                    }
-                }
+                this.animMe.SetInteger("TransMe", 0); //Corriendo
             }
+        }
 
-            if (
-                    nombreColisionador == "Alfeizar" ||
-                    nombreColisionador == "Tejado" ||
-                    nombreColisionador == "Caja" ||
-                    nombreColisionador == "Caja2" ||
-                    nombreColisionador == "CajaMadera"
-                )
+        if (
+                nombreColisionador == "Alfeizar" ||
+                nombreColisionador == "Tejado" ||
+                nombreColisionador == "Caja" ||
+                nombreColisionador == "Caja2" ||
+                nombreColisionador == "CajaMadera"
+            )
+        {
+            salto = 0;
+            if (berserk == false)
             {
-                salto = 0;
-                if (berserk == false)
-                {
-                    this.animMe.SetInteger("TransMe", 0); //Corriendo
-                }
+                this.animMe.SetInteger("TransMe", 0); //Corriendo
             }
         }	
     }
@@ -311,8 +320,7 @@ public class Scr_Personaje : MonoBehaviour {
             this.transform.Translate(velocidad * Time.deltaTime, 0, 0);
             if (this.transform.position.x >= posicionMeta && posicionMeta!=-1)
             {
-                meta = true;
-                PararSonido(0);
+                LlegoMeta();
             }
             
             //Camara
@@ -486,6 +494,12 @@ public class Scr_Personaje : MonoBehaviour {
     public void SonidoMonedas(){
         GameObject objSonidoMoneda = Instantiate(objSonidosMonedas);
         objSonidoMoneda.GetComponents<AudioSource>()[monedas%6].Play();
+    }
+
+    public void LlegoMeta()
+    {
+        meta = true;
+        PararSonido(0);
     }
 
 }

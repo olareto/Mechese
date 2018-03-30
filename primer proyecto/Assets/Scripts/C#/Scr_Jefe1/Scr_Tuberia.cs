@@ -8,6 +8,9 @@ public class Scr_Tuberia : MonoBehaviour
     [SerializeField]
     private GameObject agua;
 
+    [SerializeField]
+    private GameObject sonidoAgua;
+
     private int contador;
 
     // Use this for initialization
@@ -31,11 +34,18 @@ public class Scr_Tuberia : MonoBehaviour
 
     public IEnumerator EnumLanzaAgua()
     {
-        while (contador < 30)
+        Instantiate(sonidoAgua);
+        while (contador < 60)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
             GameObject aguaInst = Instantiate(agua);
             aguaInst.transform.position = new Vector3(this.transform.position.x - 2f, -2.53967f, 0f);
+
+            if (contador % 2 == 0)
+            {
+                aguaInst.transform.Rotate(180, 0, 0);
+            }
+            
             contador++;
         }
     }
