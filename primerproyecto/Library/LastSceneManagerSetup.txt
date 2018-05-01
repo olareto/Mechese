@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Escenas/Escenas_definitivas/Esc_Mundo2_1.unity
+  isLoaded: 1
+  isActive: 1
