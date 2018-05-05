@@ -84,12 +84,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_ControlUI.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_ControladorMenu.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_Jefe1_Intro.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_Personaje\Scr_Personaje_Colisiones.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_Personaje\Scr_Personaje_Movimiento.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo1\Scr_Personaje\Scr_Personaje_Salto.cs" />
     <Compile Include="Assets\Scripts\Otros\Mundo2\Scr_Fondo.cs" />
-    <Compile Include="Assets\Scripts\Otros\Mundo2\Scr_Personaje2.cs" />
-    <Compile Include="Assets\Scripts\Otros\Scr_ControlUI.cs" />
-    <Compile Include="Assets\Scripts\Otros\Scr_ControladorMenu.cs" />
-    <Compile Include="Assets\Scripts\Otros\Scr_Jefe1_Intro.cs" />
-    <Compile Include="Assets\Scripts\Otros\Scr_Personaje.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo2\Scr_Personaje_CambioCarril.cs" />
+    <Compile Include="Assets\Scripts\Otros\Mundo2\Scr_Personaje_SaltoTrampolin.cs" />
     <Compile Include="Assets\Scripts\Scr_Enemigos\Mundo1\Scr_Carta.cs" />
     <Compile Include="Assets\Scripts\Scr_Enemigos\Mundo1\Scr_Cartero.cs" />
     <Compile Include="Assets\Scripts\Scr_Enemigos\Mundo1\Scr_GatoMalo.cs" />

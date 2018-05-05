@@ -55,7 +55,9 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
         patronEmbestida = 0;
         vidas = 3;
 
-        StartCoroutine("FinIntro");
+        //StartCoroutine("FinIntro");
+
+        Invoke("FinIntro", 1.0f);
 
         //animBrazo = this.GetComponentsInChildren<Animator>()[1];
         //animMochila = this.GetComponentsInChildren<Animator>()[2];
@@ -222,7 +224,7 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
                 vidas--;
                 if (vidas == 0)
                 {
-                    personaje.GetComponent<Scr_Personaje>().LlegoMeta();
+                    personaje.GetComponent<Scr_Personaje_Movimiento>().LlegoMeta();
                 }
             }
         } else
@@ -282,13 +284,19 @@ public class Scr_Jefe1_Batalla : MonoBehaviour
         //animBrazo.SetBool("atacando", false);
     }
 
-    public IEnumerator FinIntro()
+    /*public IEnumerator FinIntro()
     {
         yield return new WaitForSeconds(1f);
         intro = true;
 
         //Comienzo Primer ataque
         //yield return new WaitForSeconds(1f);
+        StartCoroutine("EnumTirarBombas");
+    }*/
+
+    public void FinIntro()
+    {
+        intro = true;
         StartCoroutine("EnumTirarBombas");
     }
 
