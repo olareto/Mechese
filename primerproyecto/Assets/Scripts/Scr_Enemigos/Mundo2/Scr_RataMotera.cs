@@ -10,20 +10,33 @@ public class Scr_RataMotera : MonoBehaviour {
     [SerializeField]
     private float distanciaParaActuar;
 
-    [SerializeField]
-    private GameObject pfCocktailMolotov;
+    //[SerializeField]
+    //private GameObject pfCocktailMolotov;
+
+    //[SerializeField]
+    //private bool cocktailArriba;
 
     private GameObject camara;
 
-    private bool posicionAlcanzada;
-    private bool meMuevo;
+    //private float xAlcanzada;
 
-    private float xAlcanzada;
+    //private bool posicionAlcanzada;
+    private bool meMuevo;
+    
+    
 
     // Use this for initialization
     void Start () {
         camara = GameObject.FindGameObjectWithTag("MainCamera");
-        posicionAlcanzada = false;
+        //posicionAlcanzada = false;
+
+        if (this.transform.position.y > 5)
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = -2;
+        } else
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
     }
 	
 	// Update is called once per frame
@@ -37,7 +50,10 @@ public class Scr_RataMotera : MonoBehaviour {
 
     public void Movimiento()
     {
-        if (this.transform.position.x <= camara.transform.position.x)
+        this.transform.Translate(-velocidad * Time.deltaTime, 0, 0);
+
+        //Por si queremos que lance el cocktail molotov
+        /*if (this.transform.position.x <= camara.transform.position.x)
         {
             //Velocidad rapida
             this.transform.Translate(-velocidad * Time.deltaTime, 0, 0);
@@ -50,10 +66,11 @@ public class Scr_RataMotera : MonoBehaviour {
                 xAlcanzada = this.transform.position.x;
                 GameObject cocktail = Instantiate(pfCocktailMolotov);
                 cocktail.transform.position = new Vector3(transform.position.x+5, cocktail.transform.position.y, cocktail.transform.position.z);
+                cocktail.GetComponent<Scr_CocktailMolotov>().Arriba = cocktailArriba;
             }
             else
             {
-                if (this.transform.position.x - xAlcanzada < 20)
+                if (this.transform.position.x - xAlcanzada < 10)
                 {
                     //Velocidad como Mecheese
                     this.transform.Translate(-23 * Time.deltaTime, 0, 0);
@@ -65,7 +82,7 @@ public class Scr_RataMotera : MonoBehaviour {
                 }
             }
 
-        }
+        }*/
     }
 
     public void CompruebaDistancia()
@@ -74,8 +91,9 @@ public class Scr_RataMotera : MonoBehaviour {
         if (distanciaAcamara < distanciaParaActuar)
         {
             meMuevo = true;
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            this.GetComponent<Collider2D>().enabled = true;
+            //Si va en sentido contrario
+            //this.GetComponent<SpriteRenderer>().enabled = true;
+            //this.GetComponent<Collider2D>().enabled = true;
         }
     }
 }

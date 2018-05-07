@@ -48,7 +48,7 @@ public class Scr_ControlFondoJefe1 : MonoBehaviour {
         distanciaTrozo = personaje.transform.position.x + tamañoTrozos;
 
         GameObject sueloInstancia = Instantiate(suelo);
-        sueloInstancia.transform.position = new Vector3(sueloInstancia.transform.position.x + tamañoTrozos * (contadorTrozos-1), sueloInstancia.transform.position.y, sueloInstancia.transform.position.z);
+        sueloInstancia.transform.position = new Vector3(sueloInstancia.transform.position.x + tamañoTrozos * (contadorTrozos-1) + 50, sueloInstancia.transform.position.y, sueloInstancia.transform.position.z);
         sueloInstancia.gameObject.name = "Suelo";
         
     }

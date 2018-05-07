@@ -39,7 +39,7 @@ public class Scr_Personaje_CambioCarril : MonoBehaviour {
             if (Input.GetKeyDown("space")) //&& !golpeado && !meta && !trampolin)
             {
                 nCambios++;
-                if (nCambios <= 2)
+                if (nCambios <= 3)
                 {
                     subida = !subida;
                 }
@@ -85,6 +85,7 @@ public class Scr_Personaje_CambioCarril : MonoBehaviour {
         {
             if (transform.position.y < yDesplazada)
             {
+                //Vamos subiendo
                 //this.transform.Translate(velDespl * Time.deltaTime/3, velDespl * Time.deltaTime, 0); //Desplazamiento un poco diagonal
                 this.transform.Translate(0, velDespl * Time.deltaTime, 0);
                 this.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -95,14 +96,17 @@ public class Scr_Personaje_CambioCarril : MonoBehaviour {
                 cambioDeCarril = false;
                 subida = true;
                 nCambios = 0;
+                this.GetComponent<SpriteRenderer>().sortingOrder = -2;
             }
         }
         else
         {
             if (transform.position.y > yInicial)
             {
+                //Vamos bajando
                 //this.transform.Translate(-velDespl * Time.deltaTime/3, -velDespl * Time.deltaTime, 0); //Desplazamiento un poco diagonal
                 this.transform.Translate(0, -velDespl * Time.deltaTime, 0);
+                this.GetComponent<SpriteRenderer>().sortingOrder = -1;
             }
             else
             {
