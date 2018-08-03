@@ -119,6 +119,13 @@ public class Scr_Personaje_Colisiones : MonoBehaviour {
         {
             vidas = 1;
         }
+
+        if (SceneManager.GetActiveScene().name == "Esc_Mundo2_3")
+        {
+            vidas = 1;
+        }
+
+
         monedas = 0;
         separacionx = trCamara.position.x - this.transform.position.x ;
 
@@ -202,6 +209,31 @@ public class Scr_Personaje_Colisiones : MonoBehaviour {
                     colTr.gameObject.GetComponent<Scr_Tuberia>().LanzarAgua();
                 }
 
+                if (nombreColTr == "Misil")
+                {
+                    Destroy(colTr.gameObject);
+                    if (!invulnerable)
+                    {
+                        Golpe();
+                    }
+                }
+
+                if (nombreColTr == "ObjetoCanyon")
+                {
+                    Destroy(colTr.gameObject);
+                    GameObject.FindGameObjectWithTag("TagCochePayasos").GetComponent<Scr_CochePayasos>().NObjetoCogido++;
+
+                    //Montamos el cañon detrás de Mecheese
+                    GameObject objCanyonCogido = Instantiate(colTr.gameObject);
+                    objCanyonCogido.transform.position = new Vector3(transform.position.x-3, transform.position.y, transform.position.z);
+
+                    //Heredado a CanyonMontado
+                    objCanyonCogido.transform.parent = GameObject.FindGameObjectWithTag("TagCanyon").transform;
+
+                    //Heredado a Mecheese
+                    //objCanyonCogido.transform.parent = this.transform;
+                }
+
                 if (!golpeado &&
                     (
                         nombreColTr == "Periodico" ||
@@ -218,7 +250,9 @@ public class Scr_Personaje_Colisiones : MonoBehaviour {
                         nombreColTr == "Coche" ||
                         nombreColTr == "Camion" ||
                         nombreColTr == "Ratamotera" ||
-                        nombreColTr == "Fuego"
+                        nombreColTr == "Fuego"||
+                        nombreColTr == "ObjetoMaletero"
+
                     )
                 )
                 {
@@ -283,6 +317,7 @@ public class Scr_Personaje_Colisiones : MonoBehaviour {
                 CambiaAnimacion(0); //Corriendo
             }
         }
+
     }
 
 

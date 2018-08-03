@@ -36,7 +36,12 @@ public class Scr_Personaje_CambioCarril : MonoBehaviour {
         if (scrPersMov.Intro)
         {
             //Para ordenador
-            if (Input.GetKeyDown("space")) //&& !golpeado && !meta && !trampolin)
+            if (
+                    Input.GetKeyDown("space")
+                        && !GetComponent<Scr_Personaje_Colisiones>().Golpeado
+                        && !GetComponent<Scr_Personaje_Movimiento>().Meta
+                        && !GameObject.FindGameObjectWithTag("TagCochePayasos").GetComponent<Scr_CochePayasos>().EstaDiana
+            )  // && !trampolin)
             {
                 nCambios++;
                 if (nCambios <= 3)
@@ -48,7 +53,13 @@ public class Scr_Personaje_CambioCarril : MonoBehaviour {
             }
 
             //Para movil
-            if (Input.touchCount > 0 && !heTocado) //&& !golpeado && !meta && !trampolin)
+            if (
+                    Input.touchCount > 0
+                        && !heTocado
+                        && !GetComponent<Scr_Personaje_Colisiones>().Golpeado
+                        && !GetComponent<Scr_Personaje_Movimiento>().Meta
+                        && !GameObject.FindGameObjectWithTag("TagCochePayasos").GetComponent<Scr_CochePayasos>().EstaDiana
+                ) // && !trampolin)
             {
                 heTocado = true;
                 nCambios++;
